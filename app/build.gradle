@@ -1,6 +1,6 @@
 apply plugin: 'com.android.application'
 
-android {
+android { //修改
         signingConfigs {
             config {
                 keyAlias 'hkbell'
