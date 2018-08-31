@@ -1,0 +1,151 @@
+apply plugin: 'com.android.application'
+
+android {
+        signingConfigs {
+            config {
+                keyAlias 'hkbell'
+                keyPassword '119110'
+                storeFile file('E:/MyWork/workspace/HKbell/hkbell.jks')
+                storePassword '119110'
+            }
+    }
+    compileSdkVersion 26
+    buildToolsVersion '27.0.3'
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 26
+        multiDexEnabled true
+        versionCode 76// 版本
+        versionName "1.0.74"
+        flavorDimensions "versionCode"
+        signingConfig signingConfigs.config
+        ndk {
+            //选择要添加的对应cpu类型的.so库。
+            abiFilters 'armeabi'//, 'armeabi-v7a', 'arm64-v8a'
+            // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
+        }
+    }
+    dexOptions {
+        dexInProcess true
+        preDexLibraries true
+        javaMaxHeapSize "8g"
+        incremental true
+    }
+    buildTypes {
+        debug {
+            //混淆
+            minifyEnabled true
+            //Zipalign优化
+            zipAlignEnabled true
+            // 移除无用的resource文件
+            shrinkResources true
+            multiDexEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-project.txt'
+        }
+        release {
+            //混淆
+            minifyEnabled true
+            //Zipalign优化
+            zipAlignEnabled true
+            // 移除无用的resource文件
+            shrinkResources true
+            multiDexEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-project.txt'
+        }
+    }
+    lintOptions {
+        abortOnError false
+        checkReleaseBuilds false
+        // 防止在发布的时候出现因MissingTranslation导致Build Failed!
+        disable 'MissingTranslation'
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+    productFlavors {
+        UBell {
+            applicationId "cn.ubia.UBell"
+            manifestPlaceholders = [APP_NAME: "@string/app_name",
+                                    APP_ICON: "@drawable/icon_96",
+                                    APP_ID  : applicationId,
+                                    JPUSH_APPKEY : "b2743f78772d46703a23e3a6", //JPush上注册的包名对应的appkey.
+                                    JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
+                                    JPUSH_PKGNAME: applicationId
+
+            ]
+            buildConfigField("String", "MIPUSHID", "\"2882303761517627132\"");
+            buildConfigField("String", "MIPUSHKEY", "\"5881762729132\"");
+            buildConfigField("boolean","bAnumber","false");//密码配置规则，包含数字
+            buildConfigField("boolean","b8characters","true");//大于8个字符
+            buildConfigField("boolean","bAnuppercaseletter","false");//含大写
+            buildConfigField("boolean","bAlowercaseletter","false");//含小写
+            buildConfigField("String", "OSSAK","\"xxxxxxxxxxxxxxx\"");
+            buildConfigField("String", "OSSSK","\"xxxxxxxxxxxxxxxx\"");
+            buildConfigField("String", "OSSBUCKET","\"ubell\"");
+	    			signingConfig signingConfigs.config
+	    
+            signingConfig signingConfigs.config
+        }
+
+        VideoDoorBell {
+            applicationId "hk.bell.doorbell"
+            manifestPlaceholders = [APP_NAME: "@string/app_name",
+                                    APP_ICON: "@drawable/icon",
+                                    APP_ID  : applicationId,
+                                    JPUSH_APPKEY : "fe251b1f9c9a18d7fd0d0ec4", //JPush上注册的包名对应的appkey.
+                                    JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
+                                    JPUSH_PKGNAME: applicationId
+
+            ]
+            buildConfigField("String", "MIPUSHID", "\"2882303761517835827\"");
+            buildConfigField("String", "MIPUSHKEY", "\"5851783537827\"");
+            buildConfigField("boolean","bAnumber","false");//密码配置规则，包含数字
+            buildConfigField("boolean","b8characters","true");//大于8个字符
+            buildConfigField("boolean","bAnuppercaseletter","false");//含大写
+            buildConfigField("boolean","bAlowercaseletter","false");//含小写
+            buildConfigField("String", "OSSAK","\"LTAIyNiyrajSdg1M\"");
+            buildConfigField("String", "OSSSK","\"zn8ru4eXR98lyGADYzd1d04fZIRcOo\"");
+            buildConfigField("String", "OSSBUCKET","\"videodoorbell\"");
+            signingConfig signingConfigs.config
+        }
+
+        HKBell {
+            applicationId "hk.bell.hkbell"
+            manifestPlaceholders = [APP_NAME: "@string/app_name",
+                                    APP_ICON: "@drawable/icon",
+                                    APP_ID  : applicationId,
+                                    JPUSH_APPKEY : "540b0739cf90cc81caaa0240", //JPush上注册的包名对应的appkey.
+                                    JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
+                                    JPUSH_PKGNAME: applicationId
+
+            ]
+            buildConfigField("String", "MIPUSHID", "\"2882303761517711288\"");
+            buildConfigField("String", "MIPUSHKEY", "\"5421771187288\"");
+            buildConfigField("boolean","bAnumber","false");//密码配置规则，包含数字
+            buildConfigField("boolean","b8characters","true");//大于8个字符
+            buildConfigField("boolean","bAnuppercaseletter","false");//含大写
+            buildConfigField("boolean","bAlowercaseletter","false");//含小写
+            buildConfigField("String", "OSSAK","\"LTAIyMMpDtPFYgFY\"");
+            buildConfigField("String", "OSSSK","\"Sdeuj78xKMPIEKTbMv4GY0GiV8op8Y\"");
+            buildConfigField("String", "OSSBUCKET","\"hkbell\"");
+            signingConfig signingConfigs.config
+
+        }
+
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.google.firebase:firebase-core:11.0.4'
+    compile 'com.google.firebase:firebase-messaging:11.0.4'
+    compile 'com.android.support:multidex:1.0.0'
+    compile 'com.android.support:support-v4:26.1.0'
+    compile 'com.google.code.gson:gson:2.8.1'
+    compile project(':oss-android-sdk')
+    compile 'cn.jiguang.sdk:jpush:3.1.3'
+    compile 'cn.jiguang.sdk:jcore:1.1.9'
+}
+apply plugin: 'com.google.gms.google-services'

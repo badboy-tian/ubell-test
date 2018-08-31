@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "106471468970",
+    "firebase_url": "https://hkbell-c153f.firebaseio.com",
+    "project_id": "hkbell-c153f",
+    "storage_bucket": "hkbell-c153f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:106471468970:android:8f8345e7f35ef7b3",
+        "android_client_info": {
+          "package_name": "hk.bell.doorbell"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "106471468970-sqlphuog5eluago2doqn7q1qcs0bkptf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKND-pAuVqybmYJCZVHVgxbx5JVy7kIfA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:106471468970:android:a02da0fcaee1e86c",
+        "android_client_info": {
+          "package_name": "hk.bell.hkbell"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "106471468970-sqlphuog5eluago2doqn7q1qcs0bkptf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKND-pAuVqybmYJCZVHVgxbx5JVy7kIfA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
